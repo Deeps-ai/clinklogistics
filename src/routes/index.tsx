@@ -60,28 +60,28 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5">
-          <span className="grid size-8 place-items-center bg-navy-deep text-background">
+        <a href="#top" className="group flex items-center gap-2.5">
+          <span className="grid size-8 place-items-center bg-navy-deep text-background transition-colors group-hover:bg-ember">
             <span className="font-display text-lg italic leading-none">C</span>
           </span>
-          <span className="text-sm font-semibold tracking-tight">
+          <span className="text-sm font-semibold tracking-tight transition-colors group-hover:text-ember">
             C Link <span className="text-muted-foreground font-normal">Logistics</span>
           </span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <a href="#services" className="hover:text-foreground transition-colors">Services</a>
-          <a href="#about" className="hover:text-foreground transition-colors">About</a>
-          <a href="/vision-mission" className="hover:text-foreground transition-colors">Vision & Mission</a>
-          <a href="#network" className="hover:text-foreground transition-colors">Network</a>
-          <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
+          <a href="#services" className="link-underline hover:text-foreground transition-colors">Services</a>
+          <a href="#about" className="link-underline hover:text-foreground transition-colors">About</a>
+          <a href="/vision-mission" className="link-underline hover:text-foreground transition-colors">Vision & Mission</a>
+          <a href="#network" className="link-underline hover:text-foreground transition-colors">Network</a>
+          <a href="#contact" className="link-underline hover:text-foreground transition-colors">Contact</a>
         </nav>
 
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2 text-xs font-medium tracking-wide text-background hover:bg-ember transition-colors"
+          className="group inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2 text-xs font-medium tracking-wide text-background hover:bg-ember transition-colors"
         >
           Request a Quote
-          <span aria-hidden>→</span>
+          <span aria-hidden className="arrow-slide">→</span>
         </a>
       </div>
     </header>
