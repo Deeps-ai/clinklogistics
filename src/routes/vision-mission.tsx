@@ -207,8 +207,8 @@ function Footer() {
           <div>
             <p className="eyebrow text-background/50 mb-4">Contact</p>
             <ul className="space-y-2 text-sm font-mono">
-              <li>ops@clinkshipping.com</li>
-              <li>+91 · 24/7 desk</li>
+              <li><a href="mailto:shatrudelhi@gmail.com" className="link-underline hover:text-background transition-colors">shatrudelhi@gmail.com</a></li>
+              <li><a href="tel:+919899800655" className="link-underline hover:text-background transition-colors">+91 98998 00655</a></li>
             </ul>
           </div>
         </div>
