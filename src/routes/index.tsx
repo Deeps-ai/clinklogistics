@@ -178,11 +178,11 @@ function Services() {
         {services.map((s, i) => (
           <article
             key={s.n}
-            className={`group bg-background p-8 md:p-10 flex flex-col min-h-[26rem] ${i === 0 ? "lg:col-span-2 lg:row-span-2 lg:min-h-[54rem]" : ""}`}
+            className={`group bg-background p-8 md:p-10 flex flex-col min-h-[26rem] transition-colors hover:bg-sand ${i === 0 ? "lg:col-span-2 lg:row-span-2 lg:min-h-[54rem]" : ""}`}
           >
             <div className="flex items-center justify-between">
-              <span className="font-mono text-xs text-ember tracking-widest">{s.n}</span>
-              <span className="eyebrow">{s.tag}</span>
+              <span className="font-mono text-xs text-ember tracking-widest transition-transform group-hover:translate-x-1">{s.n}</span>
+              <span className="eyebrow transition-colors group-hover:text-foreground">{s.tag}</span>
             </div>
             <div className={`relative my-8 overflow-hidden ${i === 0 ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
               <img
@@ -191,11 +191,12 @@ function Services() {
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
               />
+              <div className="pointer-events-none absolute inset-0 bg-navy-deep/0 transition-colors duration-500 group-hover:bg-navy-deep/10" />
             </div>
-            <h3 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">{s.title}</h3>
+            <h3 className="font-display text-3xl md:text-4xl leading-tight tracking-tight transition-colors group-hover:text-ember">{s.title}</h3>
             <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">{s.copy}</p>
-            <a href="#contact" className="mt-auto pt-8 text-xs font-mono tracking-widest text-foreground border-b border-foreground/20 self-start hover:border-ember hover:text-ember transition-colors">
-              ENQUIRE →
+            <a href="#contact" className="mt-auto pt-8 text-xs font-mono tracking-widest text-foreground border-b border-foreground/20 self-start hover:border-ember hover:text-ember transition-colors inline-flex items-center gap-2">
+              ENQUIRE <span aria-hidden className="arrow-slide">→</span>
             </a>
           </article>
         ))}
