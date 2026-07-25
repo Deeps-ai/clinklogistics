@@ -69,9 +69,11 @@ function Nav() {
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           <a href="#services" className="hover:text-foreground transition-colors">Services</a>
           <a href="#about" className="hover:text-foreground transition-colors">About</a>
+          <a href="/vision-mission" className="hover:text-foreground transition-colors">Vision & Mission</a>
           <a href="#network" className="hover:text-foreground transition-colors">Network</a>
           <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
         </nav>
+
         <a
           href="#contact"
           className="inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2 text-xs font-medium tracking-wide text-background hover:bg-ember transition-colors"
