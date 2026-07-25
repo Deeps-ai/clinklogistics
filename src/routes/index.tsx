@@ -427,26 +427,27 @@ function Footer() {
           <div>
             <p className="eyebrow text-background/50 mb-4">Services</p>
             <ul className="space-y-2 text-sm">
-              <li>Freight Forwarding</li>
-              <li>Multimodal Transport</li>
-              <li>Rail Logistics</li>
-              <li>Air Cargo</li>
-              <li>Domestic Logistics</li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Freight Forwarding</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Multimodal Transport</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Rail Logistics</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Air Cargo</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Domestic Logistics</a></li>
             </ul>
           </div>
           <div>
             <p className="eyebrow text-background/50 mb-4">Company</p>
             <ul className="space-y-2 text-sm">
-              <li><a href="#about" className="hover:text-background transition-colors">About</a></li>
-              <li><a href="#network" className="hover:text-background transition-colors">Global Network</a></li>
-              <li><a href="#contact" className="hover:text-background transition-colors">Contact</a></li>
+              <li><a href="#about" className="link-underline hover:text-background transition-colors">About</a></li>
+              <li><a href="/vision-mission" className="link-underline hover:text-background transition-colors">Vision & Mission</a></li>
+              <li><a href="#network" className="link-underline hover:text-background transition-colors">Global Network</a></li>
+              <li><a href="#contact" className="link-underline hover:text-background transition-colors">Contact</a></li>
             </ul>
           </div>
           <div>
             <p className="eyebrow text-background/50 mb-4">Contact</p>
             <ul className="space-y-2 text-sm font-mono">
-              <li>ops@clinkshipping.com</li>
-              <li>+91 · 24/7 desk</li>
+              <li><a href="mailto:ops@clinkshipping.com" className="link-underline hover:text-background transition-colors">ops@clinkshipping.com</a></li>
+              <li><a href="#contact" className="link-underline hover:text-background transition-colors">+91 · 24/7 desk</a></li>
             </ul>
           </div>
         </div>
