@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import heroPort from "@/assets/hero-port.jpg";
 import serviceSea from "@/assets/service-sea.jpg";
 import serviceAir from "@/assets/service-air.jpg";
