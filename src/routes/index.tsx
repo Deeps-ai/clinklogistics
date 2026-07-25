@@ -389,9 +389,9 @@ function Contact() {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="group mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {status === "submitting" ? "Sending…" : (<>Send enquiry <span aria-hidden>→</span></>)}
+            {status === "submitting" ? "Sending…" : (<>Send enquiry <span aria-hidden className="arrow-slide">→</span></>)}
           </button>
           {status === "success" && (
             <p className="text-sm text-foreground/70 font-mono" role="status">
