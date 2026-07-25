@@ -341,7 +341,11 @@ function Contact() {
           <div className="mt-10 space-y-6 text-muted-foreground">
             <div>
               <p className="eyebrow text-foreground/60">Operations Desk</p>
-              <p className="mt-1 font-mono text-sm">ops@clinkshipping.com</p>
+              <a href="mailto:shatrudelhi@gmail.com" className="mt-1 font-mono text-sm link-underline hover:text-ember transition-colors block">shatrudelhi@gmail.com</a>
+            </div>
+            <div>
+              <p className="eyebrow text-foreground/60">Phone</p>
+              <a href="tel:+919899800655" className="mt-1 font-mono text-sm link-underline hover:text-ember transition-colors block">+91 98998 00655</a>
             </div>
             <div>
               <p className="eyebrow text-foreground/60">Head Office</p>
@@ -446,8 +450,8 @@ function Footer() {
           <div>
             <p className="eyebrow text-background/50 mb-4">Contact</p>
             <ul className="space-y-2 text-sm font-mono">
-              <li><a href="mailto:ops@clinkshipping.com" className="link-underline hover:text-background transition-colors">ops@clinkshipping.com</a></li>
-              <li><a href="#contact" className="link-underline hover:text-background transition-colors">+91 · 24/7 desk</a></li>
+              <li><a href="mailto:shatrudelhi@gmail.com" className="link-underline hover:text-background transition-colors">shatrudelhi@gmail.com</a></li>
+              <li><a href="tel:+919899800655" className="link-underline hover:text-background transition-colors">+91 98998 00655</a></li>
             </ul>
           </div>
         </div>
