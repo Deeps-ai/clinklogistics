@@ -147,8 +147,8 @@ function RouteTicker() {
         <span className="eyebrow shrink-0 pl-6 border-r border-border pr-6">Active Lanes</span>
         <div className="marquee-track flex gap-10 whitespace-nowrap font-mono text-xs tracking-wider">
           {items.map((r, i) => (
-            <span key={i} className="flex items-center gap-3">
-              <span className="size-1.5 rounded-full bg-ember" />
+            <span key={i} className="group flex items-center gap-3 cursor-default transition-colors hover:text-ember">
+              <span className="size-1.5 rounded-full bg-ember transition-transform group-hover:scale-150" />
               {r}
             </span>
           ))}
