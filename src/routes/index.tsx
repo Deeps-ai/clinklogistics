@@ -284,9 +284,10 @@ function Stats() {
       </div>
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border-t border-l border-border">
         {regions.map((r) => (
-          <li key={r.code} className="group border-r border-b border-border p-6 md:p-8 hover:bg-navy-deep hover:text-background transition-colors cursor-default">
+          <li key={r.code} className="group relative border-r border-b border-border p-6 md:p-8 hover:bg-navy-deep hover:text-background transition-colors cursor-default overflow-hidden">
             <p className="font-mono text-xs tracking-widest text-ember">{r.code}</p>
             <p className="mt-8 font-display text-xl md:text-2xl leading-tight">{r.name}</p>
+            <span aria-hidden className="absolute right-4 bottom-4 font-mono text-xs opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">→</span>
           </li>
         ))}
       </ul>
