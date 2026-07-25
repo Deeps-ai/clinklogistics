@@ -60,28 +60,28 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5">
-          <span className="grid size-8 place-items-center bg-navy-deep text-background">
+        <a href="#top" className="group flex items-center gap-2.5">
+          <span className="grid size-8 place-items-center bg-navy-deep text-background transition-colors group-hover:bg-ember">
             <span className="font-display text-lg italic leading-none">C</span>
           </span>
-          <span className="text-sm font-semibold tracking-tight">
+          <span className="text-sm font-semibold tracking-tight transition-colors group-hover:text-ember">
             C Link <span className="text-muted-foreground font-normal">Logistics</span>
           </span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <a href="#services" className="hover:text-foreground transition-colors">Services</a>
-          <a href="#about" className="hover:text-foreground transition-colors">About</a>
-          <a href="/vision-mission" className="hover:text-foreground transition-colors">Vision & Mission</a>
-          <a href="#network" className="hover:text-foreground transition-colors">Network</a>
-          <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
+          <a href="#services" className="link-underline hover:text-foreground transition-colors">Services</a>
+          <a href="#about" className="link-underline hover:text-foreground transition-colors">About</a>
+          <a href="/vision-mission" className="link-underline hover:text-foreground transition-colors">Vision & Mission</a>
+          <a href="#network" className="link-underline hover:text-foreground transition-colors">Network</a>
+          <a href="#contact" className="link-underline hover:text-foreground transition-colors">Contact</a>
         </nav>
 
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2 text-xs font-medium tracking-wide text-background hover:bg-ember transition-colors"
+          className="group inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2 text-xs font-medium tracking-wide text-background hover:bg-ember transition-colors"
         >
           Request a Quote
-          <span aria-hidden>→</span>
+          <span aria-hidden className="arrow-slide">→</span>
         </a>
       </div>
     </header>
@@ -110,12 +110,13 @@ function Hero() {
             engineered for exporters who measure success in on-time containers.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-sm bg-ember px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:brightness-110 transition">
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-sm bg-ember px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:brightness-110 transition">
               Start a shipment
-              <span aria-hidden>→</span>
+              <span aria-hidden className="arrow-slide">→</span>
             </a>
-            <a href="#services" className="inline-flex items-center gap-2 rounded-sm border border-background/25 px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-background/5 transition">
+            <a href="#services" className="group inline-flex items-center gap-2 rounded-sm border border-background/25 px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-background/5 hover:border-ember transition-colors">
               Our services
+              <span aria-hidden className="arrow-slide opacity-60">↓</span>
             </a>
           </div>
         </div>
@@ -127,9 +128,9 @@ function Hero() {
             ["48", "Partner ports"],
             ["24/7", "Operations desk"],
           ].map(([k, v]) => (
-            <div key={v}>
-              <dt className="font-display text-4xl md:text-5xl italic text-background">{k}</dt>
-              <dd className="mt-1 eyebrow text-background/50">{v}</dd>
+            <div key={v} className="group cursor-default">
+              <dt className="font-display text-4xl md:text-5xl italic text-background transition-colors group-hover:text-ember">{k}</dt>
+              <dd className="mt-1 eyebrow text-background/50 transition-colors group-hover:text-background/80">{v}</dd>
             </div>
           ))}
         </dl>
@@ -146,8 +147,8 @@ function RouteTicker() {
         <span className="eyebrow shrink-0 pl-6 border-r border-border pr-6">Active Lanes</span>
         <div className="marquee-track flex gap-10 whitespace-nowrap font-mono text-xs tracking-wider">
           {items.map((r, i) => (
-            <span key={i} className="flex items-center gap-3">
-              <span className="size-1.5 rounded-full bg-ember" />
+            <span key={i} className="group flex items-center gap-3 cursor-default transition-colors hover:text-ember">
+              <span className="size-1.5 rounded-full bg-ember transition-transform group-hover:scale-150" />
               {r}
             </span>
           ))}
@@ -177,11 +178,11 @@ function Services() {
         {services.map((s, i) => (
           <article
             key={s.n}
-            className={`group bg-background p-8 md:p-10 flex flex-col min-h-[26rem] ${i === 0 ? "lg:col-span-2 lg:row-span-2 lg:min-h-[54rem]" : ""}`}
+            className={`group bg-background p-8 md:p-10 flex flex-col min-h-[26rem] transition-colors hover:bg-sand ${i === 0 ? "lg:col-span-2 lg:row-span-2 lg:min-h-[54rem]" : ""}`}
           >
             <div className="flex items-center justify-between">
-              <span className="font-mono text-xs text-ember tracking-widest">{s.n}</span>
-              <span className="eyebrow">{s.tag}</span>
+              <span className="font-mono text-xs text-ember tracking-widest transition-transform group-hover:translate-x-1">{s.n}</span>
+              <span className="eyebrow transition-colors group-hover:text-foreground">{s.tag}</span>
             </div>
             <div className={`relative my-8 overflow-hidden ${i === 0 ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
               <img
@@ -190,11 +191,12 @@ function Services() {
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
               />
+              <div className="pointer-events-none absolute inset-0 bg-navy-deep/0 transition-colors duration-500 group-hover:bg-navy-deep/10" />
             </div>
-            <h3 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">{s.title}</h3>
+            <h3 className="font-display text-3xl md:text-4xl leading-tight tracking-tight transition-colors group-hover:text-ember">{s.title}</h3>
             <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">{s.copy}</p>
-            <a href="#contact" className="mt-auto pt-8 text-xs font-mono tracking-widest text-foreground border-b border-foreground/20 self-start hover:border-ember hover:text-ember transition-colors">
-              ENQUIRE →
+            <a href="#contact" className="mt-auto pt-8 text-xs font-mono tracking-widest text-foreground border-b border-foreground/20 self-start hover:border-ember hover:text-ember transition-colors inline-flex items-center gap-2">
+              ENQUIRE <span aria-hidden className="arrow-slide">→</span>
             </a>
           </article>
         ))}
@@ -248,8 +250,8 @@ function About() {
                 ["Quality output", "Cargo delivered as it left."],
                 ["Empowered people", "Local expertise, global reach."],
               ].map(([h, s]) => (
-                <li key={h}>
-                  <p className="font-display text-2xl italic">{h}</p>
+                <li key={h} className="group cursor-default border-l border-background/10 pl-4 -ml-4 transition-colors hover:border-ember">
+                  <p className="font-display text-2xl italic transition-colors group-hover:text-ember">{h}</p>
                   <p className="mt-1 text-background/60 text-sm">{s}</p>
                 </li>
               ))}
@@ -282,9 +284,10 @@ function Stats() {
       </div>
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border-t border-l border-border">
         {regions.map((r) => (
-          <li key={r.code} className="group border-r border-b border-border p-6 md:p-8 hover:bg-navy-deep hover:text-background transition-colors cursor-default">
+          <li key={r.code} className="group relative border-r border-b border-border p-6 md:p-8 hover:bg-navy-deep hover:text-background transition-colors cursor-default overflow-hidden">
             <p className="font-mono text-xs tracking-widest text-ember">{r.code}</p>
             <p className="mt-8 font-display text-xl md:text-2xl leading-tight">{r.name}</p>
+            <span aria-hidden className="absolute right-4 bottom-4 font-mono text-xs opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">→</span>
           </li>
         ))}
       </ul>
@@ -386,9 +389,9 @@ function Contact() {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="group mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {status === "submitting" ? "Sending…" : (<>Send enquiry <span aria-hidden>→</span></>)}
+            {status === "submitting" ? "Sending…" : (<>Send enquiry <span aria-hidden className="arrow-slide">→</span></>)}
           </button>
           {status === "success" && (
             <p className="text-sm text-foreground/70 font-mono" role="status">
@@ -424,26 +427,27 @@ function Footer() {
           <div>
             <p className="eyebrow text-background/50 mb-4">Services</p>
             <ul className="space-y-2 text-sm">
-              <li>Freight Forwarding</li>
-              <li>Multimodal Transport</li>
-              <li>Rail Logistics</li>
-              <li>Air Cargo</li>
-              <li>Domestic Logistics</li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Freight Forwarding</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Multimodal Transport</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Rail Logistics</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Air Cargo</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Domestic Logistics</a></li>
             </ul>
           </div>
           <div>
             <p className="eyebrow text-background/50 mb-4">Company</p>
             <ul className="space-y-2 text-sm">
-              <li><a href="#about" className="hover:text-background transition-colors">About</a></li>
-              <li><a href="#network" className="hover:text-background transition-colors">Global Network</a></li>
-              <li><a href="#contact" className="hover:text-background transition-colors">Contact</a></li>
+              <li><a href="#about" className="link-underline hover:text-background transition-colors">About</a></li>
+              <li><a href="/vision-mission" className="link-underline hover:text-background transition-colors">Vision & Mission</a></li>
+              <li><a href="#network" className="link-underline hover:text-background transition-colors">Global Network</a></li>
+              <li><a href="#contact" className="link-underline hover:text-background transition-colors">Contact</a></li>
             </ul>
           </div>
           <div>
             <p className="eyebrow text-background/50 mb-4">Contact</p>
             <ul className="space-y-2 text-sm font-mono">
-              <li>ops@clinkshipping.com</li>
-              <li>+91 · 24/7 desk</li>
+              <li><a href="mailto:ops@clinkshipping.com" className="link-underline hover:text-background transition-colors">ops@clinkshipping.com</a></li>
+              <li><a href="#contact" className="link-underline hover:text-background transition-colors">+91 · 24/7 desk</a></li>
             </ul>
           </div>
         </div>
