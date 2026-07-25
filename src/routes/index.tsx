@@ -110,12 +110,13 @@ function Hero() {
             engineered for exporters who measure success in on-time containers.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-sm bg-ember px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:brightness-110 transition">
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-sm bg-ember px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:brightness-110 transition">
               Start a shipment
-              <span aria-hidden>→</span>
+              <span aria-hidden className="arrow-slide">→</span>
             </a>
-            <a href="#services" className="inline-flex items-center gap-2 rounded-sm border border-background/25 px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-background/5 transition">
+            <a href="#services" className="group inline-flex items-center gap-2 rounded-sm border border-background/25 px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-background/5 hover:border-ember transition-colors">
               Our services
+              <span aria-hidden className="arrow-slide opacity-60">↓</span>
             </a>
           </div>
         </div>
