@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import heroPort from "@/assets/hero-port.jpg";
 import serviceSea from "@/assets/service-sea.jpg";
 import serviceAir from "@/assets/service-air.jpg";
@@ -291,6 +293,40 @@ function Stats() {
 }
 
 function Contact() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || "").trim(),
+      company: String(fd.get("company") || "").trim() || null,
+      email: String(fd.get("email") || "").trim(),
+      origin: String(fd.get("origin") || "").trim() || null,
+      destination: String(fd.get("destination") || "").trim() || null,
+      cargo: String(fd.get("cargo") || "").trim() || null,
+    };
+
+    if (!payload.name || !payload.email) {
+      setError("Please provide your name and email.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("submitting");
+    setError(null);
+    const { error: dbError } = await supabase.from("contact_submissions").insert(payload);
+    if (dbError) {
+      setError("We couldn't send your enquiry. Please try again.");
+      setStatus("error");
+      return;
+    }
+    form.reset();
+    setStatus("success");
+  }
+
   return (
     <section id="contact" className="bg-sand">
       <div className="container-x py-24 md:py-32 grid md:grid-cols-12 gap-12">
@@ -317,43 +353,51 @@ function Contact() {
 
         <form
           className="md:col-span-6 bg-background border border-border p-8 md:p-10 grid gap-5"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
         >
           <div className="grid sm:grid-cols-2 gap-5">
             <label className="grid gap-2">
               <span className="eyebrow">Name</span>
-              <input className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="Your name" />
+              <input name="name" required className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="Your name" />
             </label>
             <label className="grid gap-2">
               <span className="eyebrow">Company</span>
-              <input className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="Company" />
+              <input name="company" className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="Company" />
             </label>
           </div>
           <label className="grid gap-2">
             <span className="eyebrow">Email</span>
-            <input type="email" className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="you@company.com" />
+            <input name="email" type="email" required className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="you@company.com" />
           </label>
           <div className="grid sm:grid-cols-2 gap-5">
             <label className="grid gap-2">
               <span className="eyebrow">Origin</span>
-              <input className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="Port / city" />
+              <input name="origin" className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="Port / city" />
             </label>
             <label className="grid gap-2">
               <span className="eyebrow">Destination</span>
-              <input className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="Port / city" />
+              <input name="destination" className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors" placeholder="Port / city" />
             </label>
           </div>
           <label className="grid gap-2">
             <span className="eyebrow">Cargo Details</span>
-            <textarea rows={4} className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors resize-none" placeholder="Type, weight, dimensions, timing…" />
+            <textarea name="cargo" rows={4} className="border-b border-border bg-transparent py-2 outline-none focus:border-ember transition-colors resize-none" placeholder="Type, weight, dimensions, timing…" />
           </label>
           <button
             type="submit"
-            className="mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors"
+            disabled={status === "submitting"}
+            className="mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Send enquiry
-            <span aria-hidden>→</span>
+            {status === "submitting" ? "Sending…" : (<>Send enquiry <span aria-hidden>→</span></>)}
           </button>
+          {status === "success" && (
+            <p className="text-sm text-foreground/70 font-mono" role="status">
+              Thank you — your enquiry is with our operations desk. We'll reply within 4 business hours.
+            </p>
+          )}
+          {status === "error" && error && (
+            <p className="text-sm text-ember font-mono" role="alert">{error}</p>
+          )}
         </form>
       </div>
     </section>
