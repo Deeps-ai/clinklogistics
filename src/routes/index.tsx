@@ -128,9 +128,9 @@ function Hero() {
             ["48", "Partner ports"],
             ["24/7", "Operations desk"],
           ].map(([k, v]) => (
-            <div key={v}>
-              <dt className="font-display text-4xl md:text-5xl italic text-background">{k}</dt>
-              <dd className="mt-1 eyebrow text-background/50">{v}</dd>
+            <div key={v} className="group cursor-default">
+              <dt className="font-display text-4xl md:text-5xl italic text-background transition-colors group-hover:text-ember">{k}</dt>
+              <dd className="mt-1 eyebrow text-background/50 transition-colors group-hover:text-background/80">{v}</dd>
             </div>
           ))}
         </dl>
