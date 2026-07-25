@@ -250,8 +250,8 @@ function About() {
                 ["Quality output", "Cargo delivered as it left."],
                 ["Empowered people", "Local expertise, global reach."],
               ].map(([h, s]) => (
-                <li key={h}>
-                  <p className="font-display text-2xl italic">{h}</p>
+                <li key={h} className="group cursor-default border-l border-background/10 pl-4 -ml-4 transition-colors hover:border-ember">
+                  <p className="font-display text-2xl italic transition-colors group-hover:text-ember">{h}</p>
                   <p className="mt-1 text-background/60 text-sm">{s}</p>
                 </li>
               ))}
