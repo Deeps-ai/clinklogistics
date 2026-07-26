@@ -47,6 +47,95 @@ export type Database = {
         }
         Relationships: []
       }
+      shipments: {
+        Row: {
+          cargo: string | null
+          consignee: string | null
+          created_at: string
+          current_location: string | null
+          destination: string
+          eta: string | null
+          id: string
+          mode: string
+          origin: string
+          reference: string | null
+          shipper: string | null
+          status: string
+          tracking_number: string
+          updated_at: string
+        }
+        Insert: {
+          cargo?: string | null
+          consignee?: string | null
+          created_at?: string
+          current_location?: string | null
+          destination: string
+          eta?: string | null
+          id?: string
+          mode?: string
+          origin: string
+          reference?: string | null
+          shipper?: string | null
+          status?: string
+          tracking_number: string
+          updated_at?: string
+        }
+        Update: {
+          cargo?: string | null
+          consignee?: string | null
+          created_at?: string
+          current_location?: string | null
+          destination?: string
+          eta?: string | null
+          id?: string
+          mode?: string
+          origin?: string
+          reference?: string | null
+          shipper?: string | null
+          status?: string
+          tracking_number?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      tracking_events: {
+        Row: {
+          created_at: string
+          event_at: string
+          id: string
+          location: string | null
+          notes: string | null
+          shipment_id: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          event_at?: string
+          id?: string
+          location?: string | null
+          notes?: string | null
+          shipment_id: string
+          status: string
+        }
+        Update: {
+          created_at?: string
+          event_at?: string
+          id?: string
+          location?: string | null
+          notes?: string | null
+          shipment_id?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tracking_events_shipment_id_fkey"
+            columns: ["shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

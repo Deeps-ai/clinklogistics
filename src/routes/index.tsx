@@ -73,6 +73,7 @@ function Nav() {
           <a href="#about" className="link-underline hover:text-foreground transition-colors">About</a>
           <a href="/vision-mission" className="link-underline hover:text-foreground transition-colors">Vision & Mission</a>
           <a href="#network" className="link-underline hover:text-foreground transition-colors">Network</a>
+          <a href="/track" className="link-underline hover:text-foreground transition-colors">Track</a>
           <a href="#contact" className="link-underline hover:text-foreground transition-colors">Contact</a>
         </nav>
 

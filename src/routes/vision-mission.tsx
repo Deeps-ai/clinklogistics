@@ -165,6 +165,7 @@ function Nav() {
           <Link to="/" hash="services" className="hover:text-foreground transition-colors">Services</Link>
           <Link to="/vision-mission" activeProps={{ className: "text-foreground" }} className="hover:text-foreground transition-colors">Vision & Mission</Link>
           <Link to="/" hash="about" className="hover:text-foreground transition-colors">About</Link>
+          <Link to="/track" className="hover:text-foreground transition-colors">Track</Link>
           <Link to="/" hash="contact" className="hover:text-foreground transition-colors">Contact</Link>
         </nav>
         <Link
