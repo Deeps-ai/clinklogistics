@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "C Link Logistics & Shipping — Global Freight Forwarding" },
-      { name: "description", content: "C Link Logistics & Shipping Pvt Ltd — international freight forwarding across sea, air, rail and road. Serving UAE, India, Pakistan, Afghanistan, Iran and CIS since 2003." },
+      { name: "description", content: "C Link Logistics & Shipping Pvt Ltd — international freight forwarding across sea, air, rail and road. Serving UAE, India, Pakistan, Afghanistan, Iran and CIS since 2024." },
       { name: "author", content: "C Link Logistics & Shipping Pvt Ltd" },
       { property: "og:title", content: "C Link Logistics & Shipping — Global Freight Forwarding" },
       { property: "og:description", content: "One-stop logistics: sea, air, rail, road and multimodal transport across UAE, India and CIS destinations." },

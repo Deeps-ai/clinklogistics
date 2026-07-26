@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Sea, air, rail and road freight forwarding across UAE, India, Pakistan, Afghanistan, Iran and CIS. C Link Logistics & Shipping Pvt Ltd — one-stop logistics since 2003.",
+          "Sea, air, rail and road freight forwarding across UAE, India, Pakistan, Afghanistan, Iran and CIS. C Link Logistics & Shipping Pvt Ltd — one-stop logistics since 2024.",
       },
     ],
   }),
@@ -101,7 +101,7 @@ function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-deep/60 via-navy-deep/30 to-navy-deep" />
       <div className="container-x pt-24 pb-32 md:pt-40 md:pb-48">
         <div className="max-w-4xl rise">
-          <p className="eyebrow text-background/60 mb-8">C Link Logistics & Shipping Pvt Ltd · Est. 2003</p>
+          <p className="eyebrow text-background/60 mb-8">C Link Logistics & Shipping Pvt Ltd · Est. 2024</p>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-balance">
             The world moves <em>on ledger lines</em> of steel, sea and sky.
           </h1>
@@ -224,7 +224,7 @@ function About() {
           <div className="md:col-span-7">
             <p className="eyebrow text-background/60 mb-6">Our DNA · About the Group</p>
             <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-tight text-balance">
-              Founded in 2003 by rail and shipping specialists — <em>and it still shows</em>.
+              Founded in 2024 by rail and shipping specialists with 26 years of operational expertise — <em>and it still shows</em>.
             </h2>
             <div className="mt-10 space-y-6 text-background/75 text-lg leading-relaxed max-w-2xl">
               <p>
@@ -436,7 +436,7 @@ function Footer() {
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed">
             C Link Logistics & Shipping Pvt Ltd — a one-stop destination for total logistics needs across the
-            UAE, India, and CIS regions since 2003.
+            UAE, India, and CIS regions since 2024.
           </p>
         </div>
         <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
