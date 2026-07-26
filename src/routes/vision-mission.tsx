@@ -192,7 +192,7 @@ function Footer() {
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed">
             C Link Logistics & Shipping Pvt Ltd — a one-stop destination for total logistics needs across the
-            UAE, India, and CIS regions since 2003.
+            UAE, India, and CIS regions since 2024.
           </p>
         </div>
         <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
