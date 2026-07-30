@@ -346,11 +346,11 @@ function Contact() {
             <div>
               <p className="eyebrow text-foreground/60">Operations Desk</p>
               <a
-                href="mailto:shatrudelhi@gmail.com"
+                href="mailto:shatru@clinkshipping.com"
                 className="mt-3 inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                shatrudelhi@gmail.com
+                shatru@clinkshipping.com
               </a>
             </div>
             <div>
@@ -467,11 +467,11 @@ function Footer() {
             <p className="eyebrow text-background/50 mb-4">Contact</p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:shatrudelhi@gmail.com"
+                href="mailto:shatru@clinkshipping.com"
                 className="inline-flex items-center gap-2 rounded-sm bg-background px-3 py-2 text-xs font-medium tracking-wide text-navy-deep hover:bg-ember hover:text-background transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                shatrudelhi@gmail.com
+                shatru@clinkshipping.com
               </a>
               <a
                 href="tel:+919899800655"

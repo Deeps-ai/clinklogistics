@@ -171,7 +171,7 @@ function TrackPage() {
             </h2>
             <p className="mt-4 text-muted-foreground">
               Double-check the tracking number or reference. If it still doesn't appear, email{" "}
-              <a href="mailto:shatrudelhi@gmail.com" className="link-underline text-foreground">shatrudelhi@gmail.com</a>{" "}
+              <a href="mailto:shatru@clinkshipping.com" className="link-underline text-foreground">shatru@clinkshipping.com</a>{" "}
               or call <a href="tel:+919899800655" className="link-underline text-foreground">+91 98998 00655</a> and our desk will locate it.
             </p>
           </div>
@@ -307,7 +307,7 @@ function Footer() {
       <div className="container-x py-10 text-sm text-muted-foreground flex flex-col md:flex-row justify-between gap-4">
         <p>© {new Date().getFullYear()} C Link Logistics & Shipping Pvt Ltd · Est. 2024</p>
         <div className="flex gap-6">
-          <a href="mailto:shatrudelhi@gmail.com" className="link-underline hover:text-foreground">shatrudelhi@gmail.com</a>
+          <a href="mailto:shatru@clinkshipping.com" className="link-underline hover:text-foreground">shatru@clinkshipping.com</a>
           <a href="tel:+919899800655" className="link-underline hover:text-foreground">+91 98998 00655</a>
         </div>
       </div>
