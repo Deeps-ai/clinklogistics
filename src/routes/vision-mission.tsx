@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import clinkLogo from "@/assets/clink-logo.png.asset.json";
 
 export const Route = createFileRoute("/vision-mission")({
   component: VisionMission,

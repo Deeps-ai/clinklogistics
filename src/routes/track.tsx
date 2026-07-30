@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import clinkLogo from "@/assets/clink-logo.png.asset.json";
 
 export const Route = createFileRoute("/track")({
   component: TrackPage,
