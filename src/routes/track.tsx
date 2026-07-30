@@ -306,8 +306,9 @@ function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="container-x py-10 text-sm text-muted-foreground flex flex-col md:flex-row justify-between gap-4">
         <p>© {new Date().getFullYear()} C Link Logistics & Shipping Pvt Ltd · Est. 2024</p>
-        <div className="flex gap-6">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-6">
           <a href="mailto:shatru@clinkshipping.com" className="link-underline hover:text-foreground">shatru@clinkshipping.com</a>
+          <a href="mailto:Info@clinkshipping.com" className="link-underline hover:text-foreground">Info@clinkshipping.com</a>
           <a href="tel:+919899800655" className="link-underline hover:text-foreground">+91 98998 00655</a>
         </div>
       </div>
