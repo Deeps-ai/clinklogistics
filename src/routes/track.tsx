@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import clinkLogo from "@/assets/clink-logo.png.asset.json";
 
 export const Route = createFileRoute("/track")({
   component: TrackPage,
@@ -272,9 +273,11 @@ function Nav() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between">
         <Link to="/" className="group flex items-center gap-2.5">
-          <span className="grid size-8 place-items-center bg-navy-deep text-background transition-colors group-hover:bg-ember">
-            <span className="font-display text-lg italic leading-none">C</span>
-          </span>
+          <img
+            src={clinkLogo.url}
+            alt="C Link Logistics & Shipping Line logo"
+            className="h-10 w-10 object-contain transition-transform group-hover:scale-105"
+          />
           <span className="text-sm font-semibold tracking-tight transition-colors group-hover:text-ember">
             C Link <span className="text-muted-foreground font-normal">Logistics</span>
           </span>
