@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Sea, air, rail and road freight forwarding across UAE, India, Pakistan, Afghanistan, Iran and CIS. C Link Logistics & Shipping Pvt Ltd — one-stop logistics since 2024.",
+          "NVOCC, freight forwarding and destination specialists for Afghanistan and CIS. C Link Logistics & Shipping Pvt Ltd — overseas offices in Dubai, Karachi and Afghanistan since 2024.",
       },
     ],
   }),
