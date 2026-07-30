@@ -153,10 +153,12 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5">
-          <span className="grid size-8 place-items-center bg-navy-deep text-background">
-            <span className="font-display text-lg italic leading-none">C</span>
-          </span>
+        <Link to="/" className="group flex items-center gap-2.5">
+          <img
+            src={clinkLogo.url}
+            alt="C Link Logistics & Shipping Line logo"
+            className="h-10 w-10 object-contain transition-transform group-hover:scale-105"
+          />
           <span className="text-sm font-semibold tracking-tight">
             C Link <span className="text-muted-foreground font-normal">Logistics</span>
           </span>
@@ -186,8 +188,8 @@ function Footer() {
       <div className="container-x py-16 grid md:grid-cols-12 gap-10">
         <div className="md:col-span-5">
           <div className="flex items-center gap-2.5">
-            <span className="grid size-8 place-items-center bg-background text-navy-deep">
-              <span className="font-display text-lg italic leading-none">C</span>
+            <span className="grid size-10 place-items-center rounded bg-background p-1">
+              <img src={clinkLogo.url} alt="C Link Logistics & Shipping Line logo" className="h-full w-full object-contain" />
             </span>
             <span className="text-sm font-semibold tracking-tight text-background">C Link Logistics</span>
           </div>
