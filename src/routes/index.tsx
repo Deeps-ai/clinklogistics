@@ -17,18 +17,17 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Sea, air, rail and road freight forwarding across UAE, India, Pakistan, Afghanistan, Iran and CIS. C Link Logistics & Shipping Pvt Ltd — one-stop logistics since 2024.",
+          "NVOCC, freight forwarding and destination specialists for Afghanistan and CIS. C Link Logistics & Shipping Pvt Ltd — overseas offices in Dubai, Karachi and Afghanistan since 2024.",
       },
     ],
   }),
 });
 
 const services = [
-  { n: "01", title: "Freight Forwarding", tag: "Sea", copy: "FCL & LCL ocean freight to and from every major Indian port, connecting the Middle East, Africa, Europe and the Americas.", img: serviceSea },
-  { n: "02", title: "Multimodal Transport", tag: "Combined", copy: "Sea–rail–road corridors engineered as a single moving line, optimised for cost, transit time and cargo integrity.", img: serviceRoad },
-  { n: "03", title: "Rail Logistics", tag: "Rail", copy: "Container rail solutions across the Indian subcontinent and onward CIS destinations, led by rail-industry specialists.", img: serviceRail },
-  { n: "04", title: "Air Cargo", tag: "Air", copy: "Time-critical air freight for high-value, perishable and project cargo, with worldwide airline partnerships.", img: serviceAir },
-  { n: "05", title: "Domestic Logistics", tag: "Road", copy: "Door-to-door road transportation for regular and project cargo of every weight class, backed by tracked fleets.", img: serviceRoad },
+  { n: "01", title: "NVOCC", tag: "Sea", copy: "Non-vessel operating common carrier services with competitive rates, fixed sailings and direct control of container space on major India–Middle East–CIS lanes.", img: serviceSea },
+  { n: "02", title: "Freight Forwarding", tag: "Sea / Air / Land", copy: "End-to-end forwarding for FCL, LCL, air and road cargo — customs, documentation and carrier co-ordination handled as one continuous desk.", img: serviceAir },
+  { n: "03", title: "Afghanistan", tag: "Specialised Lane", copy: "Dedicated Afghanistan logistics: customs-bonded transit, overland corridors via Pakistan and Iran, and last-mile delivery to Kabul, Herat, Kandahar and Mazar.", img: serviceRoad },
+  { n: "04", title: "CIS Destination", tag: "Rail / Road", copy: "Multimodal delivery into Kazakhstan, Uzbekistan, Tajikistan, Turkmenistan, Kyrgyzstan and beyond via rail and road corridors from India and the UAE.", img: serviceRail },
 ];
 
 const routes = [
@@ -167,28 +166,28 @@ function Services() {
     <section id="services" className="container-x py-24 md:py-32">
       <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-end mb-16">
         <div className="md:col-span-7">
-          <p className="eyebrow mb-4">Services · [01 — 05]</p>
+          <p className="eyebrow mb-4">Services · [01 — 04]</p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-tight text-balance">
-            Every modality, coordinated by one <em>desk</em>.
+            NVOCC, forwarding and destination specialists for <em>Afghanistan & CIS</em>.
           </h2>
         </div>
         <p className="md:col-span-5 text-muted-foreground text-lg leading-relaxed">
-          Sea, air, rail and road as instruments of a single supply chain — configured to your cargo, your route
-          and your delivery window.
+          Controlled ocean space, integrated forwarding and deep lane expertise into Afghanistan and the CIS —
+          configured to your cargo, route and delivery window.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-        {services.map((s, i) => (
+      <div className="grid md:grid-cols-2 gap-px bg-border">
+        {services.map((s) => (
           <article
             key={s.n}
-            className={`group bg-background p-8 md:p-10 flex flex-col min-h-[26rem] transition-colors hover:bg-sand ${i === 0 ? "lg:col-span-2 lg:row-span-2 lg:min-h-[54rem]" : ""}`}
+            className="group bg-background p-8 md:p-10 flex flex-col min-h-[24rem] transition-colors hover:bg-sand"
           >
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs text-ember tracking-widest transition-transform group-hover:translate-x-1">{s.n}</span>
               <span className="eyebrow transition-colors group-hover:text-foreground">{s.tag}</span>
             </div>
-            <div className={`relative my-8 overflow-hidden ${i === 0 ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+            <div className="relative my-8 overflow-hidden aspect-[16/9]">
               <img
                 src={s.img}
                 alt={s.title}
@@ -377,6 +376,10 @@ function Contact() {
               <p className="mt-1 font-mono text-sm">C Link Logistics & Shipping Pvt Ltd · India</p>
             </div>
             <div>
+              <p className="eyebrow text-foreground/60">Overseas Offices</p>
+              <p className="mt-1 font-mono text-sm">Dubai · Karachi · Afghanistan</p>
+            </div>
+            <div>
               <p className="eyebrow text-foreground/60">Response Window</p>
               <p className="mt-1 font-mono text-sm">Under 4 business hours</p>
             </div>
@@ -449,18 +452,17 @@ function Footer() {
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed">
             C Link Logistics & Shipping Pvt Ltd — a one-stop destination for total logistics needs across the
-            UAE, India, and CIS regions since 2024.
+            UAE, India, Pakistan, Afghanistan and CIS regions since 2024. Overseas offices in Dubai, Karachi and Afghanistan.
           </p>
         </div>
         <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
           <div>
             <p className="eyebrow text-background/50 mb-4">Services</p>
             <ul className="space-y-2 text-sm">
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">NVOCC</a></li>
               <li><a href="#services" className="link-underline hover:text-background transition-colors">Freight Forwarding</a></li>
-              <li><a href="#services" className="link-underline hover:text-background transition-colors">Multimodal Transport</a></li>
-              <li><a href="#services" className="link-underline hover:text-background transition-colors">Rail Logistics</a></li>
-              <li><a href="#services" className="link-underline hover:text-background transition-colors">Air Cargo</a></li>
-              <li><a href="#services" className="link-underline hover:text-background transition-colors">Domestic Logistics</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">Afghanistan Logistics</a></li>
+              <li><a href="#services" className="link-underline hover:text-background transition-colors">CIS Destination</a></li>
             </ul>
           </div>
           <div>
