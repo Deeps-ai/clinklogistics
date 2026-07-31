@@ -14,6 +14,80 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          body: string | null
+          created_at: string
+          email: string
+          error: string | null
+          id: string
+          provider: string
+          provider_message_id: string | null
+          sent_at: string | null
+          shipment_id: string
+          status: string
+          subject: string | null
+          type: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          email: string
+          error?: string | null
+          id?: string
+          provider?: string
+          provider_message_id?: string | null
+          sent_at?: string | null
+          shipment_id: string
+          status?: string
+          subject?: string | null
+          type?: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          email?: string
+          error?: string | null
+          id?: string
+          provider?: string
+          provider_message_id?: string | null
+          sent_at?: string | null
+          shipment_id?: string
+          status?: string
+          subject?: string | null
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_shipment_id_fkey"
+            columns: ["shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       contact_submissions: {
         Row: {
           cargo: string | null
@@ -53,6 +127,7 @@ export type Database = {
           consignee: string | null
           created_at: string
           current_location: string | null
+          customer_email: string | null
           destination: string
           eta: string | null
           id: string
@@ -69,6 +144,7 @@ export type Database = {
           consignee?: string | null
           created_at?: string
           current_location?: string | null
+          customer_email?: string | null
           destination: string
           eta?: string | null
           id?: string
@@ -85,6 +161,7 @@ export type Database = {
           consignee?: string | null
           created_at?: string
           current_location?: string | null
+          customer_email?: string | null
           destination?: string
           eta?: string | null
           id?: string

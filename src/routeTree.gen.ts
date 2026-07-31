@@ -9,13 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VisionMissionRouteImport } from './routes/vision-mission'
-import { Route as TrackRouteImport } from './routes/track'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as TrackRouteImport } from './routes/track'
+import { Route as VisionMissionRouteImport } from './routes/vision-mission'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminCreateRouteImport } from './routes/admin.create'
+import { Route as AdminShipmentsIdRouteImport } from './routes/admin.shipments.$id'
 
-const VisionMissionRoute = VisionMissionRouteImport.update({
-  id: '/vision-mission',
-  path: '/vision-mission',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrackRoute = TrackRouteImport.update({
@@ -23,49 +32,104 @@ const TrackRoute = TrackRouteImport.update({
   path: '/track',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const VisionMissionRoute = VisionMissionRouteImport.update({
+  id: '/vision-mission',
+  path: '/vision-mission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCreateRoute = AdminCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminShipmentsIdRoute = AdminShipmentsIdRouteImport.update({
+  id: '/shipments/$id',
+  path: '/shipments/$id',
+  getParentRoute: () => AdminRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/track': typeof TrackRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/admin/create': typeof AdminCreateRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/shipments/$id': typeof AdminShipmentsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/track': typeof TrackRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/admin/create': typeof AdminCreateRoute
+  '/admin': typeof AdminIndexRoute
+  '/admin/shipments/$id': typeof AdminShipmentsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/track': typeof TrackRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/admin/create': typeof AdminCreateRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/shipments/$id': typeof AdminShipmentsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/track' | '/vision-mission'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/track'
+    | '/vision-mission'
+    | '/admin/create'
+    | '/admin/'
+    | '/admin/shipments/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/track' | '/vision-mission'
-  id: '__root__' | '/' | '/track' | '/vision-mission'
+  to:
+    | '/'
+    | '/track'
+    | '/vision-mission'
+    | '/admin/create'
+    | '/admin'
+    | '/admin/shipments/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/track'
+    | '/vision-mission'
+    | '/admin/create'
+    | '/admin/'
+    | '/admin/shipments/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   TrackRoute: typeof TrackRoute
   VisionMissionRoute: typeof VisionMissionRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/vision-mission': {
-      id: '/vision-mission'
-      path: '/vision-mission'
-      fullPath: '/vision-mission'
-      preLoaderRoute: typeof VisionMissionRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/track': {
@@ -75,21 +139,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrackRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/vision-mission': {
+      id: '/vision-mission'
+      path: '/vision-mission'
+      fullPath: '/vision-mission'
+      preLoaderRoute: typeof VisionMissionRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/create': {
+      id: '/admin/create'
+      path: '/create'
+      fullPath: '/admin/create'
+      preLoaderRoute: typeof AdminCreateRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/shipments/$id': {
+      id: '/admin/shipments/$id'
+      path: '/shipments/$id'
+      fullPath: '/admin/shipments/$id'
+      preLoaderRoute: typeof AdminShipmentsIdRouteImport
+      parentRoute: typeof AdminRoute
     }
   }
 }
 
+interface AdminRouteChildren {
+  AdminCreateRoute: typeof AdminCreateRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminShipmentsIdRoute: typeof AdminShipmentsIdRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminCreateRoute: AdminCreateRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  AdminShipmentsIdRoute: AdminShipmentsIdRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   TrackRoute: TrackRoute,
   VisionMissionRoute: VisionMissionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

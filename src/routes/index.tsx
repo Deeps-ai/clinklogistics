@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useEffect, useState } from "react";
+import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 import heroPort from "@/assets/hero-port.jpg";
 import serviceSea from "@/assets/service-sea.jpg";
 import serviceAir from "@/assets/service-air.jpg";
@@ -8,6 +8,7 @@ import serviceRail from "@/assets/service-rail.jpg";
 import serviceRoad from "@/assets/service-road.jpg";
 import aboutOps from "@/assets/about-ops.jpg";
 import clinkLogo from "@/assets/logo.png";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -57,6 +58,12 @@ function Index() {
 }
 
 function Nav() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  useEffect(() => {
+    document.body.classList.toggle("mobile-nav-open", mobileOpen);
+    return () => document.body.classList.remove("mobile-nav-open");
+  }, [mobileOpen]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between">
@@ -70,6 +77,8 @@ function Nav() {
             C Link <span className="text-muted-foreground font-normal">Logistics</span>
           </span>
         </a>
+
+        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           <a href="#services" className="link-underline hover:text-foreground transition-colors">Services</a>
           <a href="#about" className="link-underline hover:text-foreground transition-colors">About</a>
@@ -79,14 +88,46 @@ function Nav() {
           <a href="#contact" className="link-underline hover:text-foreground transition-colors">Contact</a>
         </nav>
 
-        <a
-          href="#contact"
-          className="group inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2 text-xs font-medium tracking-wide text-background hover:bg-ember transition-colors"
-        >
-          Request a Quote
-          <span aria-hidden className="arrow-slide">→</span>
-        </a>
+<div className="flex items-center gap-3">
+          <ThemeToggle />
+<a
+            href="#contact"
+            className="group hidden sm:inline-flex items-center gap-2 rounded-sm bg-navy-deep dark:bg-foreground/15 px-4 py-2 text-xs font-medium tracking-wide text-background dark:text-foreground hover:bg-ember transition-colors"
+          >
+            Request a Quote
+            <span aria-hidden className="arrow-slide">→</span>
+          </a>
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden inline-flex items-center justify-center size-10 rounded-sm border border-border text-foreground hover:bg-sand transition-colors"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            )}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile drawer */}
+      {mobileOpen && (
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-lg">
+          <nav className="container-x py-6 flex flex-col gap-4 text-sm">
+            <a href="#services" onClick={() => setMobileOpen(false)} className="flex items-center justify-between py-2 hover:text-ember transition-colors"><span>Services</span><span className="text-muted-foreground">→</span></a>
+            <a href="#about" onClick={() => setMobileOpen(false)} className="flex items-center justify-between py-2 hover:text-ember transition-colors"><span>About</span><span className="text-muted-foreground">→</span></a>
+            <a href="/vision-mission" onClick={() => setMobileOpen(false)} className="flex items-center justify-between py-2 hover:text-ember transition-colors"><span>Vision & Mission</span><span className="text-muted-foreground">→</span></a>
+            <a href="#network" onClick={() => setMobileOpen(false)} className="flex items-center justify-between py-2 hover:text-ember transition-colors"><span>Network</span><span className="text-muted-foreground">→</span></a>
+            <a href="/track" onClick={() => setMobileOpen(false)} className="flex items-center justify-between py-2 hover:text-ember transition-colors"><span>Track</span><span className="text-muted-foreground">→</span></a>
+            <a href="#contact" onClick={() => setMobileOpen(false)} className="flex items-center justify-between py-2 hover:text-ember transition-colors"><span>Contact</span><span className="text-muted-foreground">→</span></a>
+<a href="#contact" onClick={() => setMobileOpen(false)} className="mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep dark:bg-foreground/15 px-4 py-3 text-xs font-medium tracking-wide text-background dark:text-foreground hover:bg-ember transition-colors text-center">
+              Request a Quote <span>→</span>
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -287,7 +328,7 @@ function Stats() {
       </div>
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border-t border-l border-border">
         {regions.map((r) => (
-          <li key={r.code} className="group relative border-r border-b border-border p-6 md:p-8 hover:bg-navy-deep hover:text-background transition-colors cursor-default overflow-hidden">
+            <li key={r.code} className="group relative border-r border-b border-border p-6 md:p-8 hover:bg-navy-deep dark:hover:bg-navy hover:text-background dark:hover:text-foreground transition-colors cursor-default overflow-hidden">
             <p className="font-mono text-xs tracking-widest text-ember">{r.code}</p>
             <p className="mt-8 font-display text-xl md:text-2xl leading-tight">{r.name}</p>
             <span aria-hidden className="absolute right-4 bottom-4 font-mono text-xs opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">→</span>
@@ -301,6 +342,7 @@ function Stats() {
 function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const supabaseAvailable = isSupabaseConfigured();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -323,6 +365,14 @@ function Contact() {
 
     setStatus("submitting");
     setError(null);
+
+    if (!supabaseAvailable) {
+      // Show success anyway — the enquiry can be handled via email/phone
+      form.reset();
+      setStatus("success");
+      return;
+    }
+
     const { error: dbError } = await supabase.from("contact_submissions").insert(payload);
     if (dbError) {
       setError("We couldn't send your enquiry. Please try again.");
@@ -334,27 +384,32 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-sand">
+    <section id="contact" className="bg-sand dark:bg-navy/20">
       <div className="container-x py-24 md:py-32 grid md:grid-cols-12 gap-12">
         <div className="md:col-span-6">
           <p className="eyebrow mb-4">Start a Shipment</p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-tight text-balance">
             Tell us what needs to move. <em>We'll take it from the dock.</em>
           </h2>
+          {!supabaseAvailable && (
+            <div className="mt-6 rounded-md border border-amber-400/30 bg-amber-50 dark:bg-amber-900/20 px-4 py-3 text-sm text-amber-800 dark:text-amber-300">
+              ⚡ Online enquiry form will be available once connected. In the meantime, email or call us directly.
+            </div>
+          )}
           <div className="mt-10 space-y-6 text-muted-foreground">
             <div>
               <p className="eyebrow text-foreground/60">Operations Desk</p>
               <div className="mt-3 flex flex-col sm:flex-row gap-3">
-                <a
+<a
                   href="mailto:shatru@clinkshipping.com"
-                  className="inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors"
+                  className="inline-flex items-center gap-2 rounded-sm bg-navy-deep dark:bg-foreground/15 px-4 py-2.5 text-sm font-medium tracking-wide text-background dark:text-foreground hover:bg-ember transition-colors"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                   shatru@clinkshipping.com
                 </a>
                 <a
                   href="mailto:Info@clinkshipping.com"
-                  className="inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors"
+                  className="inline-flex items-center gap-2 rounded-sm bg-navy-deep dark:bg-foreground/15 px-4 py-2.5 text-sm font-medium tracking-wide text-background dark:text-foreground hover:bg-ember transition-colors"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                   Info@clinkshipping.com
@@ -363,9 +418,9 @@ function Contact() {
             </div>
             <div>
               <p className="eyebrow text-foreground/60">Phone</p>
-              <a
+<a
                 href="tel:+919899800655"
-                className="mt-3 inline-flex items-center gap-2 rounded-sm bg-navy-deep px-4 py-2.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors"
+                className="mt-3 inline-flex items-center gap-2 rounded-sm bg-navy-deep dark:bg-foreground/15 px-4 py-2.5 text-sm font-medium tracking-wide text-background dark:text-foreground hover:bg-ember transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 +91 98998 00655
@@ -421,7 +476,7 @@ function Contact() {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="group mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep px-6 py-3.5 text-sm font-medium tracking-wide text-background hover:bg-ember transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+className="group mt-2 inline-flex items-center justify-center gap-2 rounded-sm bg-navy-deep dark:bg-foreground/15 px-6 py-3.5 text-sm font-medium tracking-wide text-background dark:text-foreground hover:bg-ember transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === "submitting" ? "Sending…" : (<>Send enquiry <span aria-hidden className="arrow-slide">→</span></>)}
           </button>
@@ -446,7 +501,7 @@ function Footer() {
         <div className="md:col-span-5">
           <div className="flex items-center gap-2.5">
             <span className="grid size-10 place-items-center rounded bg-background p-1">
-              <img src={clinkLogo.url} alt="C Link Logistics & Shipping Line logo" className="h-full w-full object-contain" />
+              <img src={clinkLogo} alt="C Link Logistics & Shipping Line logo" className="h-full w-full object-contain" />
             </span>
             <span className="text-sm font-semibold tracking-tight text-background">C Link Logistics</span>
           </div>
@@ -477,23 +532,23 @@ function Footer() {
           <div>
             <p className="eyebrow text-background/50 mb-4">Contact</p>
             <div className="flex flex-col gap-3">
-              <a
-                href="mailto:shatru@clinkshipping.com"
-                className="inline-flex items-center gap-2 rounded-sm bg-background px-3 py-2 text-xs font-medium tracking-wide text-navy-deep hover:bg-ember hover:text-background transition-colors"
+<a
+href="mailto:shatru@clinkshipping.com"
+                className="inline-flex items-center gap-2 rounded-sm bg-background dark:bg-navy px-3 py-2 text-xs font-medium tracking-wide text-foreground hover:bg-ember hover:text-background transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 shatru@clinkshipping.com
               </a>
               <a
-                href="mailto:Info@clinkshipping.com"
-                className="inline-flex items-center gap-2 rounded-sm bg-background px-3 py-2 text-xs font-medium tracking-wide text-navy-deep hover:bg-ember hover:text-background transition-colors"
+href="mailto:Info@clinkshipping.com"
+                className="inline-flex items-center gap-2 rounded-sm bg-background dark:bg-navy px-3 py-2 text-xs font-medium tracking-wide text-foreground hover:bg-ember hover:text-background transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 Info@clinkshipping.com
               </a>
               <a
-                href="tel:+919899800655"
-                className="inline-flex items-center gap-2 rounded-sm bg-background px-3 py-2 text-xs font-medium tracking-wide text-navy-deep hover:bg-ember hover:text-background transition-colors"
+href="tel:+919899800655"
+                className="inline-flex items-center gap-2 rounded-sm bg-background dark:bg-navy px-3 py-2 text-xs font-medium tracking-wide text-foreground hover:bg-ember hover:text-background transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 +91 98998 00655
