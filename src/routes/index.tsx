@@ -7,9 +7,9 @@ import serviceAir from "@/assets/service-air.jpg";
 import serviceRail from "@/assets/service-rail.jpg";
 import serviceRoad from "@/assets/service-road.jpg";
 import aboutOps from "@/assets/about-ops.jpg";
-import clinkLogo from "import clinkLogo from "@/assets/logo.png";";
+import clinkLogo from "import clinkLogo from "@/assets/logo.png";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/"){
   component: Index,
   head: () => ({
     meta: [
