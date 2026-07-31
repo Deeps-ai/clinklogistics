@@ -7,7 +7,7 @@ import serviceAir from "@/assets/service-air.jpg";
 import serviceRail from "@/assets/service-rail.jpg";
 import serviceRoad from "@/assets/service-road.jpg";
 import aboutOps from "@/assets/about-ops.jpg";
-import clinkLogo from "@/assets/clink-logo.png.asset.json";
+import clinkLogo from "import clinkLogo from "@/assets/logo.png";";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -61,11 +61,11 @@ function Nav() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between">
         <a href="#top" className="group flex items-center gap-2.5">
-          <img
-            src={clinkLogo.url}
-            alt="C Link Logistics & Shipping Line logo"
-            className="h-10 w-10 object-contain transition-transform group-hover:scale-105"
-          />
+         <img
+           src={clinkLogo}
+           alt="C Link Logistics & Shipping Line logo"
+           className="h-10 w-10 object-contain transition-transform group-hover:scale-105"
+           />
           <span className="text-sm font-semibold tracking-tight transition-colors group-hover:text-ember">
             C Link <span className="text-muted-foreground font-normal">Logistics</span>
           </span>
